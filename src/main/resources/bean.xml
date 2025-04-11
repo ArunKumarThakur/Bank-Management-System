@@ -3,6 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="customerService" class="Services.CustomerServiceImplementation"/>
+    <bean id="accountService" class="Services.AccountServiceImplementation"/>
+    <bean id="transactionService" class="Services.TransactionServiceImplementation"/>
+
+    <bean id="bankService" class="Services.BankServiceImplementation">
+        <property name="customerService" ref="customerService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="transactionService" ref="transactionService"/>
+    </bean>
 
 
 

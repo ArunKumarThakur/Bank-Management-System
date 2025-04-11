@@ -13,6 +13,13 @@ public class Customer {
     //Default constructor;
     public Customer(){};
 
+
+    public Customer(String id, String name, String email){
+        this.customerId = id;
+        this.customerName = name;
+        this.email = email;
+    }
+
     public Customer(String customerName, String customerId, String email, String phoneNumber, String address, String dateOfBirth, String aadharNumber, String panNumber) {
         this.customerName = customerName;
         this.customerId = customerId;
