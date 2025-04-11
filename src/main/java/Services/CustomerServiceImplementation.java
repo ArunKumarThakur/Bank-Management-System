@@ -1,15 +1,16 @@
 package Services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import Entities.Customer;
 import java.util.Map;
+
 public class CustomerServiceImplementation implements CustomerService{
     Set<Customer> customerList = new HashSet<>();
     Map<String, Customer> idToCustomer = new HashMap<>();
 
+    static int customerId = 101;
 
     @Override
     public void addCustomer(Customer customer) {
