@@ -1,9 +1,8 @@
+package Services;
+
 import Entities.Account;
 import Entities.Customer;
 import Entities.Transaction;
-import Services.BankService;
-import Services.CustomerService;
-import Services.TransactionService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
