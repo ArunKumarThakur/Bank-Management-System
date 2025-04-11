@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!-- Enable AspectJ support -->
+    <aop:aspectj-autoproxy/>
 
+    <!-- Beans -->
+    <bean id="customerService" class="Services.CustomerServiceImplementation"/>
+    <bean id="accountService" class="Services.AccountServiceImplementation"/>
+    <bean id="transactionService" class="Services.TransactionServiceImplementation"/>
 
+    <bean id="bankService" class="Services.BankServiceImplementation">
+        <property name="customerService" ref="customerService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="transactionService" ref="transactionService"/>
+    </bean>
 
+    <!-- Logging Aspect -->
+    <bean id="loggingAspect" class="Aspects.LoggingAspect"/>
 </beans>
