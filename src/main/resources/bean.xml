@@ -6,8 +6,22 @@
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- Enable AspectJ support -->
-    <aop:aspectj-autoproxy/>
+    <!-- AOP Configuration -->
+    <bean id="loggingAspects" class="Aspects.LoggingAspects"/>
+
+
+    <aop:config>
+        <aop:aspect ref="loggingAspects">
+
+            <!-- Pointcut for all public methods of BankServiceImplementation -->
+            <aop:pointcut id="bankServiceMethods"
+                          expression="execution(* Services.BankServiceImplementation.*(..))"/>
+
+            <!-- Logging before every method -->
+            <aop:before method="logBeforeMethod" pointcut-ref="bankServiceMethods"/>
+
+        </aop:aspect>
+    </aop:config>
 
     <!-- Beans -->
     <bean id="customerService" class="Services.CustomerServiceImplementation"/>
@@ -19,7 +33,4 @@
         <property name="accountService" ref="accountService"/>
         <property name="transactionService" ref="transactionService"/>
     </bean>
-
-    <!-- Logging Aspect -->
-<!--    <bean id="loggingAspect" class="Aspects.LoggingAspect"/>-->
 </beans>
