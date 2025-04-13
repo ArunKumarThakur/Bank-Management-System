@@ -20,8 +20,11 @@ public interface BankService {
     boolean withdraw(String accountNumber, double amount);
     boolean transfer(String fromAccountNumber, String toAccountNumber, double amount);
     boolean closeAccount(String accountNumber);
-
+    double getBalance(String accountNumber);
+    boolean validateBankAccount(String accountNumber);
     // Transaction operations
     List<Transaction> getAllTransactions();
     List<Transaction> getTransactionsByAccountNumber(String accountNumber);
+
+
 }

@@ -32,7 +32,8 @@ public class BankApplication {
             System.out.println("7. View All Transactions");
             System.out.println("8. View Transactions by Account");
             System.out.println("9. View all customers");
-            System.out.println("10. Exit");
+            System.out.println("10. Check your balance");
+            System.out.println("11. Exit");
             System.out.print("Choose: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -171,6 +172,16 @@ public class BankApplication {
                     }
                     break;
                 case 10:
+                    System.out.println("Enter account number");
+                    String accountNumber = scanner.next();
+                    if(bankService.validateBankAccount(accountNumber)) {
+                        System.out.println("Your current Balance : "+bankService.getBalance(accountNumber));
+                        break;
+                    }
+
+                    System.out.println("Bank Account not found ");
+                    break;
+                case 11:
                     System.out.println("Exiting...");
                     return;
                 default:

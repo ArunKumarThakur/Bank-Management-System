@@ -12,14 +12,8 @@
 
     <aop:config>
         <aop:aspect ref="loggingAspects">
-
-            <!-- Pointcut for all public methods of BankServiceImplementation -->
-            <aop:pointcut id="bankServiceMethods"
-                          expression="execution(* Services.BankServiceImplementation.*(..))"/>
-
-            <!-- Logging before every method -->
+            <aop:pointcut id="bankServiceMethods" expression="execution(* Services.BankServiceImplementation.*(..))"/>
             <aop:before method="logBeforeMethod" pointcut-ref="bankServiceMethods"/>
-
         </aop:aspect>
     </aop:config>
 

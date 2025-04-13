@@ -20,4 +20,8 @@ public interface AccountService {
     boolean transfer(String fromAccountNumber, String toAccountNumber, double amount);
 
     boolean closeAccount(String accountNumber);
+
+    double getAmount(String accountNumber);
+
+    boolean validateBankAccount(String accountNumber);
 }

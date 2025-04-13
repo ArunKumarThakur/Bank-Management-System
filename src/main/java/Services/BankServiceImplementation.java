@@ -79,4 +79,13 @@ public class BankServiceImplementation implements BankService{
         return transactionService.getTransactionsByAccountNumber(accountNumber);
     }
 
+    @Override
+    public double getBalance(String accountNumber) {
+        return accountService.getAmount(accountNumber);
+    }
+
+    @Override
+    public boolean validateBankAccount(String accountNumber) {
+        return accountService.getAccountByNumber(accountNumber) != null ;
+    }
 }

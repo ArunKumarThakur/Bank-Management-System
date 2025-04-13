@@ -93,4 +93,15 @@ public class AccountServiceImplementation implements AccountService{
         System.out.println("Account closed successfully");
         return true;
     }
+
+    @Override
+    public double getAmount(String accountNumber) {
+        Account account = idToAccount.get(accountNumber);
+        return account.getBalance();
+    }
+
+    @Override
+    public boolean validateBankAccount(String accountNumber) {
+        return idToAccount.get(accountNumber) != null;
+    }
 }
